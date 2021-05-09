@@ -1,0 +1,147 @@
+diff --git a/js/main-179-ef9e307ae495f17f7aee-plex-4.54.5-09228e8.js b/js/main-179-ef9e307ae495f17f7aee-plex-4.54.5-09228e8.js
+index 2ee368d..9659eda 100644
+--- a/js/main-179-ef9e307ae495f17f7aee-plex-4.54.5-09228e8.js
++++ b/js/main-179-ef9e307ae495f17f7aee-plex-4.54.5-09228e8.js
+@@ -68270,2 +68270,102 @@
+ 					let H = "cover";
++					function injected_path_component(e) {
++						let t = e["aria-label"],
++							i = e.className,
++							n = e.style,
++							a = {
++								viewBox: "0 0 560 560",
++								xmlns: "http://www.w3.org/2000/svg",
++								strokeMiterlimit: "1.414",
++								strokeLinejoin: "round",
++								id: "plex-icon-files-560"
++						};
++						a["aria-hidden"] = !t, a.style = n, a.className = injected.plexIcon + (i ? " " + i : "");
++						var s = [injected.react_context.createElement.apply(injected.react_context, ["path",
++						{
++							d: "m480 240l0 240-240 0 0-240 240 0m-40 40l-160 0 0 160 160 0 0-160m-40-120l0 40-200 0 0 200-40 0 0-240 240 0m-80-80l0 40-200 0 0 200-40 0 0-240 240 0"
++						}].concat([]))];
++						return t && s.unshift(injected.react_context.createElement("title", null, t)), injected.react_context.createElement.apply(injected.react_context, ["svg", a].concat(s))
++					}
++					injected_path_component.propTypes = {
++						"aria-label": ls().string,
++						className: ls().string,
++						style: ls().object
++					};
++					const injected = {
++						css: {
++							tags: {
++								"MetadataPosterCard-legacyNumberBadge": "3vfppB",
++								"MetadataPosterCard-badge": "3iLj2g",
++								"MetadataPosterCard-topLeftBadge": "fMpxnJ",
++								"Badge-badge": "3V2nLB",
++							},
++							tagged: function (s) { return [s, this.tags[s]].join('-'); },
++							legacyMultiVersionBadge: () => "MetadataPosterCard-legacyMultiVersionBadge-injected",
++							legacyMultiVersionIcon: () => "MetadataPosterCard-legacyMultiVersionIcon-injected",
++							topLeftBadge: function() {
++								return [this.tagged("MetadataPosterCard-topLeftBadge"), this.tagged("MetadataPosterCard-badge")].join(' ');
++							},
++							multiVersionBadge: function() {
++								return ["MultiVersionBadge-multiVersionBadge-injected", this.tagged("Badge-badge")].join(' ');
++							},
++							numerical_tag: function() {
++								return [this.legacyMultiVersionBadge(), this.tagged("MetadataPosterCard-legacyNumberBadge"),
++										this.tagged("MetadataPosterCard-badge"), this.topLeftBadge()].join(' ');
++							},
++						},
++						animationDuration: z,
++						deferred_object: E,
++						metadataItem: n,
++						metadataItemState: i,
++						metadataTimelineState: s,
++						isHovered: C,
++						isActionsMenuOpen: Z,
++						plexIcon: cs.Z.plexIcon,
++						provider_calculator: () => Go(injected.provider_data),
++						provider_data: S,
++						react_context: y,
++						state_component: () => du,
++						top_left_component: () => Ga,
++						badge_component: () => va,
++						tag_component: () => injected_path_component,
++						multiple_media_items: function() {
++							return this.metadataItem.Media !== undefined && this.metadataItem.Media.length > 1 &&
++								this.provider_calculator() && !this.metadataItem.isExtra;
++						} ,
++						inject_state_and_badge: function() {
++							return this.isHovered || this.isActionsMenuOpen ? null : this.react_context.createElement(
++								this.react_context.Fragment, null, this.react_context.createElement(this.state_component(), {
++									metadataItemState: this.metadataItemState,
++									metadataTimelineState: this.metadataTimelineState
++							}), this.react_context.createElement(this.top_left_component(), {
++								className: this.css.topLeftBadge(),
++								metadataItem: this.metadataItem,
++								isShadowVisible: !0
++							}));
++						},
++						inject_badge_animation: function() {
++							return this.deferred_object && this.multiple_media_items() ?
++								this.react_context.create_element("div", {
++									className: this.css.topLeftBadge(),
++									style: {
++										animationDuration: this.animationDuration
++									}
++								}, this.react_context.createElement(({
++									className: e = this.css.multiVersionBadge()
++								}) => {
++									return this.react_context.createElement(this.badge_component(), {
++										className: e,
++										iconComponent: this.tag_component()
++									});
++								}, {})) : null;
++						},
++						inject_numerical_tag: function() {
++							return !this.deferred_object && this.multiple_media_items() ?
++								this.react_context.createElement("div", {
++									className: this.css.numerical_tag()
++								}, this.react_context.createElement(this.tag_component(), {
++									className: this.css.legacyMultiVersionIcon()
++								}), " ", this.metadataItem.Media.length) : null;
++						},
++					};
+ 					return n.isLiveTVChannel ? H = "75%" : n.type === ri.pG.Game && (H = "contain"), y.createElement(qn,
+@@ -68295,7 +68395,3 @@
+ 						backgroundSize: H
+-					}), C || Z ? null : y.createElement(du,
+-					{
+-						metadataItemState: i,
+-						metadataTimelineState: s
+-					}), n.userState && k > 0 && !u ? y.createElement(nu,
++					}), injected.inject_state_and_badge(), n.userState && k > 0 && !u ? y.createElement(nu,
+ 					{
+@@ -68350,3 +68446,3 @@
+ 						onSelectPress: F
+-					}), n.isPlaylist && n.smart ? y.createElement("div",
++					}), injected.inject_badge_animation(), n.isPlaylist && n.smart ? y.createElement("div",
+ 					{
+@@ -68364,3 +68460,3 @@
+ 						}
+-					}, i.watchlistedAt ? y.createElement(Da, null) : y.createElement(Ia, null)) : null, E || ya(S) || ma(n) || !n.userState || n.type !== ri.pG.Movie && n.type !== ri.pG.Episode && (n.type !== ri.pG.Track || n.subtype !== ri.y_.Podcast) || null != i.saved && !i.saved || i.viewOffset || i.viewCount ? null : y.createElement("div",
++					}, i.watchlistedAt ? y.createElement(Da, null) : y.createElement(Ia, null)) : null, injected.inject_numerical_tag(), E || ya(S) || ma(n) || !n.userState || n.type !== ri.pG.Movie && n.type !== ri.pG.Episode && (n.type !== ri.pG.Track || n.subtype !== ri.y_.Podcast) || null != i.saved && !i.saved || i.viewOffset || i.viewCount ? null : y.createElement("div",
+ 					{
+diff --git a/main-179-ef9e307ae495f17f7aee-plex-4.54.5-09228e8.css b/main-179-ef9e307ae495f17f7aee-plex-4.54.5-09228e8.css
+index f8c0b44..43a5a3a 100644
+--- a/main-179-ef9e307ae495f17f7aee-plex-4.54.5-09228e8.css
++++ b/main-179-ef9e307ae495f17f7aee-plex-4.54.5-09228e8.css
+@@ -2,2 +2,16 @@
+ 
++.MetadataPosterCard-legacyMultiVersionBadge-injected,.MultiVersionBadge-multiVersionBadge-injected {
++	background-color: #568
++}
++
++.MetadataPosterCard-topLeftBadge-fMpxnJ {
++	top: 4px;
++	left: 4px;
++}
++
++.MetadataPosterCard-legacyMultiVersionIcon-injected {
++	margin-right: 2px;
++	font-size: 14px
++}
++
+ /*!
