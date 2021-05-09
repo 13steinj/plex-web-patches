@@ -31,8 +31,8 @@ context. These patches are generated with `git diff -U<n>` where n starts at 0
 and is incremented until the patch is successful (patches with "not enough"
 context spuriously fail).
 
-Steps to install patches on PMS or Plex Desktop (Windows / Linux, other
-platforms untested and may need slight changes):
+Steps to install patches on PMS or Plex Desktop (Windows / Linux / Desktop on
+MacOS, other platforms are untested and may need slight changes):
 
 Prerequisites: [git](https://git-scm.com/downloads), a source control/code
 management software. As of now, you may be able to get away with the simple
@@ -47,8 +47,10 @@ the patch using `git`!
 2. ```bash
    # for PMS
    $ cd ./Resources/Plug-ins-*/WebClient.bundle/Contents/Resources/
-   # for Plex Desktop
-   $ cd ./web-client
+   # for Plex Desktop on Windows
+   $ cd ./web-client/
+   # for Plex Desktop on MacOs
+   $ cd ./Contents/Resources/web-client/
    ```
    I recommend backing up this directory before proceeding.
 3. Open `index.html` in a text editor, look for a `script` tag that references
